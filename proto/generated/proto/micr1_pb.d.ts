@@ -1,5 +1,5 @@
 // package: micr1
-// file: micr1.proto
+// file: proto/micr1.proto
 
 import * as jspb from "google-protobuf";
 

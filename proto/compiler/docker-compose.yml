@@ -3,8 +3,9 @@ version: "3.7"
 services:
   generic:
     build:
-      context: ../.docker
+      context: ../../.docker
       dockerfile: Dockerfile.dev
     volumes:
-      - ./proto:/proto
+      - ../:/proto
+      - ./:/app
     working_dir: /app
