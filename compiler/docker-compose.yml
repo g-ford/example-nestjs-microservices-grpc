@@ -6,6 +6,6 @@ services:
       context: ../.docker
       dockerfile: Dockerfile.dev
     volumes:
-      - ../:/proto
+      - ../proto/:/proto
       - ./:/app
     working_dir: /app
