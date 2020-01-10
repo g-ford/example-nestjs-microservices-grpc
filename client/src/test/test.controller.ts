@@ -28,7 +28,7 @@ export class TestController implements OnModuleInit {
 
   @Get('client1')
   find1(): Observable<any> {
-    return this.micr1Service.findOne({ id: 1 });
+    return this.micr1Service.findOne({ id: 1 }, null);
   }
 
   @Get('client2')
