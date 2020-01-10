@@ -17,6 +17,9 @@ fix_permission:
 
 proto_generate:
 	cd ./protobuf/compiler && docker-compose run generic npm install && docker-compose run generic cp -R /protos /app && docker-compose run generic sh compile.sh
-	cp -R ./protobuf/compiler/generated/protos ./microservices/micr1/src/protobuf
-	cp -R ./protobuf/compiler/generated/protos ./microservices/micr2/src/protobuf
-	cp -R ./protobuf/compiler/generated/protos ./client/src/protobuf
+	make proto_cp
+
+proto_cp:
+	cp -R ./protobuf/compiler/generated ./microservices/micr1/src/protobuf
+	cp -R ./protobuf/compiler/generated ./microservices/micr2/src/protobuf
+	cp -R ./protobuf/compiler/generated ./client/src/protobuf
