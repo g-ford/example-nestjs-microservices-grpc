@@ -12,7 +12,7 @@ fix_permission:
 	sudo chown -R ${USER}:${GROUP} ./
 
 proto_generate:
-	cd ./proto/compiler && docker-compose run generic sh compile.sh
+	cd ./compiler && docker-compose run generic cp -R /proto /app && sh compile.sh
 	
 # npm_outdate:
 # 	docker-compose run node npm outdate
