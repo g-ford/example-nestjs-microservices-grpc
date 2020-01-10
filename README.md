@@ -11,7 +11,7 @@ This repo show as to configure a multi microservices stack in NestJS using gRPC 
 ```bash
 make proto_generate
 make npm_install
-docker-compose up
+make execute
 ```
 Navigate to
 

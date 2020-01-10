@@ -8,6 +8,9 @@ format:
 	docker-compose run node_2 		npm run format
 	docker-compose run node_client 	npm run format
 
+execute:
+	docker-compose up
+
 fix_permission:
 	sudo chown -R ${USER}:${GROUP} ./
 
