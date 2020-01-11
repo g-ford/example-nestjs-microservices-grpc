@@ -8,12 +8,12 @@ RUN npm install -g ts-node
 RUN npm install -g ts-node-dev
 
 # npm update all
-RUN npm install -g outdate
-RUN npm install -g ncu
+RUN npm i -g npm-check-updates
 
 # nest
 RUN npm install -g @nestjs/cli
 
+# proto ts generate
 RUN npm install -g ts-protoc-gen
 
 RUN apk add protobuf

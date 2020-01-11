@@ -1,5 +1,8 @@
 init:
 	make proto_generate
+	docker-compose run node_1 		ncu -u
+	docker-compose run node_2 		ncu -u
+	docker-compose run node_client 	ncu -u
 	docker-compose run node_1 		npm install
 	docker-compose run node_2 		npm install
 	docker-compose run node_client 	npm install
