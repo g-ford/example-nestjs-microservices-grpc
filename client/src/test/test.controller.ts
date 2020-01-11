@@ -2,9 +2,8 @@ import { Controller, Get, OnModuleInit } from '@nestjs/common';
 import { Client, ClientGrpc } from '@nestjs/microservices';
 import { grpcClientOptions1 } from './client1';
 import { grpcClientOptions2 } from './client2';
-import { Observable } from 'rxjs';
-import { Micr1ServiceClient } from 'src/protobuf/protos/micr1_grpc_pb';
-import { Micr2ServiceClient } from 'src/protobuf/protos/micr2_grpc_pb';
+import { Micr1ServiceClient } from '../protobuf/protos/micr1_grpc_pb';
+import { Micr2ServiceClient } from '../protobuf/protos/micr2_grpc_pb';
 import { Micr1ById } from '../protobuf/protos/micr1_pb';
 
 @Controller('test')
