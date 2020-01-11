@@ -5,6 +5,7 @@ import { grpcClientOptions2 } from './client2';
 import { Observable } from 'rxjs';
 import { Micr1ServiceClient } from 'src/protobuf/protos/micr1_grpc_pb';
 import { Micr2ServiceClient } from 'src/protobuf/protos/micr2_grpc_pb';
+import { Micr1ById } from 'src/protobuf/protos/micr1_pb';
 
 @Controller('test')
 export class TestController implements OnModuleInit {
@@ -27,12 +28,20 @@ export class TestController implements OnModuleInit {
   }
 
   @Get('client1')
-  find1(): Observable<any> {
-    return this.micr1Service.findOne({ id: 1 }, null);
+  find1(): any {
+    const message = new Micr1ById();
+    message.setId(1);
+    this.micr1Service.findOne(message, (result, err) => {
+      return result;
+    });
   }
 
   @Get('client2')
-  find2(): Observable<any> {
-    return this.micr2Service.findOne({ id: 3 });
+  find2(): any {
+    const message = new Micr1ById();
+    message.setId(3);
+    this.micr2Service.findOne(message, (result, err) => {
+      return result;
+    });
   }
 }

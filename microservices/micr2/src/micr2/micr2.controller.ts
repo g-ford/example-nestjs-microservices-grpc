@@ -3,7 +3,7 @@ import { GrpcMethod } from '@nestjs/microservices';
 import { Micr2ById, Micr2 } from 'src/protobuf/protos/micr2_pb';
 
 @Controller()
-export class Micr1Service {
+export class Micr2Service {
   @GrpcMethod()
   findOne(data: Micr2ById.AsObject, metadata: any): Micr2.AsObject {
     const items = [
