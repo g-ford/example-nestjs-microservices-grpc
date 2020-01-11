@@ -5,7 +5,7 @@ import { grpcClientOptions2 } from './client2';
 import { Observable } from 'rxjs';
 import { Micr1ServiceClient } from 'src/protobuf/protos/micr1_grpc_pb';
 import { Micr2ServiceClient } from 'src/protobuf/protos/micr2_grpc_pb';
-import { Micr1ById } from 'src/protobuf/protos/micr1_pb';
+import { Micr1ById } from '../protobuf/protos/micr1_pb';
 
 @Controller('test')
 export class TestController implements OnModuleInit {
