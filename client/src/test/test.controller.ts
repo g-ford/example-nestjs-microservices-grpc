@@ -1,17 +1,10 @@
-
 import { Controller, Get, OnModuleInit } from '@nestjs/common';
-import { Transport } from '@nestjs/common/enums/transport.enum';
 import { Client, ClientGrpc } from '@nestjs/microservices';
 import { grpcClientOptions1 } from './client1';
 import { grpcClientOptions2 } from './client2';
-import { Observable } from 'rxjs';
-
-interface Micr1Service {
-  findOne(data: { id: number }): Observable<any>;
-}
-interface Micr2Service {
-  findOne(data: { id: number }): Observable<any>;
-}
+import { Micr1Service } from 'protos-compiler/generated/protos/micr1';
+import { Micr2Service } from 'protos-compiler/generated/protos/micr2';
+import { Micr1ById } from 'protos-compiler/generated/protos/micr1_pb';
 
 @Controller('test')
 export class TestController implements OnModuleInit {
@@ -30,12 +23,12 @@ export class TestController implements OnModuleInit {
   }
 
   @Get('client1')
-  find1(): Observable<any> {
-    return this.micr1Service.findOne({ id: 1 });
+  find1(): any {
+    return this.micr1Service.FindOne({ id: 1 });
   }
 
   @Get('client2')
-  find2(): Observable<any> {
-    return this.micr2Service.findOne({ id: 3 });
+  find2(): any {
+    return this.micr1Service.FindOne({ id: 3 });
   }
 }

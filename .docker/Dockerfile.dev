@@ -14,6 +14,12 @@ RUN npm i -g npm-check-updates
 RUN npm install -g @nestjs/cli
 
 # proto ts generate
-RUN npm install -g ts-protoc-gen
+# RUN npm install -g ts-protoc-gen
+
+# RUN npm install request -g
+# RUN npm config set unsafe-perm true
+# RUN npm install -g protoc-gen-grpc
+# RUN npm install -g protoc-gen-grpc-ts
+RUN npm install -g ts-proto
 
 RUN apk add protobuf

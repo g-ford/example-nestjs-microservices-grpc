@@ -1,11 +1,11 @@
 import { Controller } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
-import { Micr1ById, Micr1 } from 'protos-compiler/generated/protos/micr1_pb';
+import { Micr1ById, Micr1 } from 'protos-compiler/generated/protos/micr1';
 
 @Controller()
 export class Micr1Service {
   @GrpcMethod()
-  findOne(data: Micr1ById.AsObject, metadata: any): Micr1.AsObject {
+  findOne(data: Micr1ById, metadata: any): Micr1 {
     const items = [
       { id: 1, name: 'John' },
       { id: 2, name: 'Doe' },
