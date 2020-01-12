@@ -4,7 +4,6 @@ import { grpcClientOptions1 } from './client1';
 import { grpcClientOptions2 } from './client2';
 import { Micr1Service } from 'protos-compiler/generated/protos/micr1';
 import { Micr2Service } from 'protos-compiler/generated/protos/micr2';
-import { Micr1ById } from 'protos-compiler/generated/protos/micr1_pb';
 
 @Controller('test')
 export class TestController implements OnModuleInit {
@@ -24,11 +23,11 @@ export class TestController implements OnModuleInit {
 
   @Get('client1')
   find1(): any {
-    return this.micr1Service.FindOne({ id: 1 });
+    return this.micr1Service.findOne({ id: 1 });
   }
 
   @Get('client2')
   find2(): any {
-    return this.micr1Service.FindOne({ id: 3 });
+    return this.micr1Service.findOne({ id: 3 });
   }
 }
