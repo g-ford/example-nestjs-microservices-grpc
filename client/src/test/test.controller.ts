@@ -1,10 +1,17 @@
+
 import { Controller, Get, OnModuleInit } from '@nestjs/common';
+import { Transport } from '@nestjs/common/enums/transport.enum';
 import { Client, ClientGrpc } from '@nestjs/microservices';
 import { grpcClientOptions1 } from './client1';
 import { grpcClientOptions2 } from './client2';
-import { Micr1ServiceClient } from 'protos-compiler/generated/protos/micr1_grpc_pb';
-import { Micr2ServiceClient } from 'protos-compiler/generated/protos/micr2_grpc_pb';
-import { Micr1ById } from 'protos-compiler/generated/protos/micr1_pb';
+import { Observable } from 'rxjs';
+
+interface Micr1Service {
+  findOne(data: { id: number }): Observable<any>;
+}
+interface Micr2Service {
+  findOne(data: { id: number }): Observable<any>;
+}
 
 @Controller('test')
 export class TestController implements OnModuleInit {
@@ -14,39 +21,21 @@ export class TestController implements OnModuleInit {
   @Client(grpcClientOptions2)
   private readonly client2: ClientGrpc;
 
-  private micr1Service: Micr1ServiceClient;
-  private micr2Service: Micr2ServiceClient;
+  private micr1Service: Micr1Service;
+  private micr2Service: Micr2Service;
 
   onModuleInit() {
-    this.micr1Service = this.client1.getService<Micr1ServiceClient>(
-      'Micr1Service',
-    );
-    this.micr2Service = this.client2.getService<Micr2ServiceClient>(
-      'Micr2Service',
-    );
+    this.micr1Service = this.client1.getService<Micr1Service>('Micr1Service');
+    this.micr2Service = this.client2.getService<Micr2Service>('Micr2Service');
   }
 
   @Get('client1')
-  find1(): any {
-    const message = new Micr1ById();
-    message.setId(1);
-
-    console.log(message);
-    console.log(this.micr1Service)
-
-    this.micr1Service.findOne(message, (result, err) => {
-      console.log(err);
-      console.log(result);
-      return result;
-    });
+  find1(): Observable<any> {
+    return this.micr1Service.findOne({ id: 1 });
   }
 
   @Get('client2')
-  find2(): any {
-    const message = new Micr1ById();
-    message.setId(3);
-    this.micr2Service.findOne(message, (result, err) => {
-      return result;
-    });
+  find2(): Observable<any> {
+    return this.micr2Service.findOne({ id: 3 });
   }
 }
