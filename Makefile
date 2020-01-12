@@ -16,6 +16,7 @@ format:
 	${command} node_client 	npm run format
 
 execute:
+	docker-compose down
 	docker-compose up
 
 fix_permission:
