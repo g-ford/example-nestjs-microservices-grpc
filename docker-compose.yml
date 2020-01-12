@@ -6,8 +6,9 @@ services:
       context: .docker
       dockerfile: Dockerfile.dev
     volumes:
-      - ./microservices/micr1:/app
+      - ./micr1:/app
       - ./protobuf/protos:/proto
+      - ./protobuf:/protobuf
     command: nest start
     working_dir: /app
 
@@ -16,8 +17,9 @@ services:
       context: .docker
       dockerfile: Dockerfile.dev
     volumes:
-      - ./microservices/micr2:/app
+      - ./micr2:/app
       - ./protobuf/protos:/proto
+      - ./protobuf:/protobuf
     command: nest start
     working_dir: /app
     
@@ -28,6 +30,7 @@ services:
     volumes:
       - ./client:/app
       - ./protobuf/protos:/proto
+      - ./protobuf:/protobuf
     command: nest start
     working_dir: /app
     ports: 
