@@ -10,6 +10,9 @@ export class Micr1Service {
       { id: 1, name: 'John' },
       { id: 2, name: 'Doe' },
     ];
+
+    console.log('here micr1', items);
+
     return items.find(({ id }) => id === data.id);
   }
 }

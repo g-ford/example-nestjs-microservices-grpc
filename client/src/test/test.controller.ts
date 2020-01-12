@@ -30,7 +30,12 @@ export class TestController implements OnModuleInit {
   find1(): any {
     const message = new Micr1ById();
     message.setId(1);
+
+    console.log(message);
+
     this.micr1Service.findOne(message, (result, err) => {
+      console.log(err);
+      console.log(result);
       return result;
     });
   }
