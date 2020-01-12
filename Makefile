@@ -23,9 +23,3 @@ fix_permission:
 
 proto_generate:
 	cd ./protobuf/compiler && ${command} generic npm install && ${command} generic cp -R /protos /app && ${command} generic sh compile.sh
-	make proto_cp
-
-proto_cp:
-	cp -R ./protobuf/compiler/generated ./microservices/micr1/src/protobuf
-	cp -R ./protobuf/compiler/generated ./microservices/micr2/src/protobuf
-	cp -R ./protobuf/compiler/generated ./client/src/protobuf
